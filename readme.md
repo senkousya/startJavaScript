@@ -21,7 +21,7 @@ JAVAに名前が似てるし、調べだすとサーバサイドJavaScriptとか
 - これは元々ブラウザ用の言語だったので標準標準入出力やモジュール機能やファイルI/Oやら普通の言語なら持っている物が色々と存在しなかった。
 - 色々とランタイムが勃興してきて混沌としてきたので、サーバサイドの処理について標準的な仕様を作ろうとServerJSプロジェクト(任意団体)が立ち上がる。(2009年1月)
 - ServerJSがサーバサイドだけじゃなくて、より広範囲を対象とするためにCommonJSに改名する。(2009年8月)
-- CommonJSの実装としてNode.jsとか出てきて流行るけれど、Node.JSはすでにCommon.JSを独自拡張をして独自ルートを走っている。さらにその独自仕様に対して他も追従して事実上の標準みたいな形になっているらしい。
+- CommonJSの実装としてNode.jsとか出てきて流行るけれど、Node.jsはすでにCommon.JSを独自拡張をして独自ルートを走っている。さらにその独自仕様に対して他も追従して事実上の標準みたいな形になっているらしい。
 - ちなみにNode.jsはgoogle v8エンジンで動作している。
 - ECMAScript6から正式なナンバリングがES2015のような策定した年表記になり毎年新しい規格が策定されるようになる。
 
@@ -63,8 +63,7 @@ chromを起動して**F12キー** or **Ctrl+Shift+I**で下記のような画面
 
 コンソールタブを選択すると下記のような画面が表示されます。
 
-▶実行結果
-
+▶コンソール画面  
 ![](image/chrome.developer.step001.png)
 
 ここに下記のように入力して**Enter**を押すと
@@ -74,20 +73,17 @@ chromを起動して**F12キー** or **Ctrl+Shift+I**で下記のような画面
 console.log('hello world')
 ```
 
-▶実行結果
-
+▶実行結果  
 ![](image/chrome.developer.step002.png)
 
 上記のような感じでconsoleに**hello world**と表示されます。
 
 なお入力時に**shift+Enter**で改行ができ、下記のように複数行入力も出来たりします。
 
-▶入力
-
+▶入力  
 ![](image/chrome.developer.step003.png)
 
-▶実行結果
-
+▶実行結果  
 ![](image/chrome.developer.step004.png)
 
 このコンソールでJavaScriptの基本的な動作を実行して確認していきます。
@@ -107,8 +103,7 @@ console.log(Sensitive);
 console.log(SENSITIVE);
 ```
 
-▶実行結果
-
+▶実行結果  
 ![](image/chrome.developer.sensitive.png)
 
 ### 💎コメント
@@ -138,11 +133,10 @@ console.log('HelloWorld');
 ```
 
 セミコロンを書き忘れてもASI(Automatic Semicolon Insertion)という仕組みで保管されたりするのですが。
-
-個人的にはセミコロンを明示的に書きたい所。
+ASIの仕組みを熟知していないと意図しない所で保管される可能性もあるので、個人的にはセミコロンを明示的に書きたい所。
 
 ただどうしても書き忘れが出てくるので。
-lint(プログラムの構文チェックをやってくれる)を何かしら使いたい所。
+JavaScript用のlinter(プログラムの構文チェックをやってくれる)を何かしら使いたい。
 
 Node.jsにESLintというJavaScriptのコードをルールに従ってチェックしてくれるパッケージがあるのでそこらへんを使うと便利です。
 
@@ -173,14 +167,12 @@ console.log(food);
 console.log(keyPhrase);
 ```
 
-▶実行結果
-
+▶実行結果  
 ![](image/chrome.developer.variables.png)
 
 varとletのスコープ周りの話は後述します。
 
 letの対応状況がイマイチだった昔ならばいざしらず。
-
 今現在は基本的にはletを使い。真に必要な場合にvarを使うのが良さそうです。
 
 ### 💎変数の巻き上げ（ホイスティング）
@@ -195,8 +187,7 @@ var variable = 'helloWorld';
 console.log(variable);
 ```
 
-▶実行結果
-
+▶実行結果  
 ![](image/chrome.developer.hoisting.png)
 
 変数**variable**をvarで宣言するまえに、console.logでアクセスしているのでエラーとなりそうなものですが。
@@ -209,8 +200,7 @@ variable = 'helloWorld';
 console.log(variable);
 ```
 
-なお、letを用いた場合は宣言前に変数にアクセスするとエラーとなります。
-
+なお、letを用いた場合は宣言前に変数にアクセスするとエラーとなります。  
 ![](image/chrome.developer.hoisting.step002.png)
 
 ### 💎文字列を扱う
@@ -227,8 +217,7 @@ var concatenate = left + right;
 console.log(concatenate);
 ```
 
-▶実行結果
-
+▶実行結果  
 ![](image/chrome.developer.string.png)
 
 ### 💎文字列長を取得
@@ -243,8 +232,7 @@ var language = 'JavaScript';
 console.log(language.length);
 ```
 
-▶実行結果
-
+▶実行結果  
 ![](image/chrome.developer.length.png)
 
 ### 💎数値を扱う
@@ -256,8 +244,7 @@ var sum = 10 + 20;
 console.log(sum);
 ```
 
-▶実行結果
-
+▶実行結果  
 ![](image/chrome.developer.numbers.png)
 
 ### 💎数値と数字（文字列）を相互に変換
@@ -280,8 +267,7 @@ console.log(sumNumber);
 console.log(concatenateNumber);
 ```
 
-▶実行結果
-
+▶実行結果  
 ![](image/chrome.developer.numberToString.png)
 
 #### 数字（文字列）を数値に変換
@@ -302,8 +288,7 @@ console.log(sumNumber);
 console.log(concatenateNumber);
 ```
 
-▶実行結果
-
+▶実行結果  
 ![](image/chrome.developer.stringTonumber.png)
 
 ### 💎ブロック文
@@ -319,8 +304,7 @@ if文とかfor文とかwhile文とかで使われる{}もこのブロック文�
 }
 ```
 
-▶実行結果
-
+▶実行結果  
 ![](image/chrome.developer.block.png)
 
 ### 💎ブロック文のスコープ
@@ -339,8 +323,7 @@ var varScope = 'outBlock';
 console.log(varScope);
 ```
 
-▶実行結果
-
+▶実行結果  
 ![](image/chrome.developer.block.step001.png)
 
 letを使うと下記のような感じになります。
@@ -359,8 +342,7 @@ letを使うと下記のような感じになります。
 }
 ```
 
-▶実行結果
-
+▶実行結果  
 ![](image/chrome.developer.block.step002.png)
 
 こういう動作を見ると、やはり基本的にはletを使っていくのがベターなんだと感じます。
@@ -379,8 +361,7 @@ console.log(drinkLiquor('sake'));
 console.log(drinkLiquor('whisky'));
 ```
 
-▶実行結果
-
+▶実行結果  
 ![](image/chrome.developer.function.png)
 
 ### 💎関数式(FunctionExpression)
@@ -397,8 +378,7 @@ functionは下記のように式にもできる。
 }
 ```
 
-▶実行結果
-
+▶実行結果  
 ![](image/chrome.developer.FunctionExpression.png)
 
 ### 💎無名関数(AnonymousFunction)
@@ -415,8 +395,7 @@ functionは下記のように式にもできる。
 }
 ```
 
-▶実行結果
-
+▶実行結果  
 ![](image/chrome.developer.AnonymousFunction.png)
 
 ### 💎即時関数（IIFE: Immediately Invokable Function Expressions)
@@ -436,8 +415,7 @@ functionは下記のように式にもできる。
 }
 ```
 
-▶実行結果
-
+▶実行結果  
 ![](image/chrome.developer.IIFE.png)
 
 ### 💎関数のスコープ
@@ -457,8 +435,7 @@ var varScope = 'outFunction';
 console.log(varScope);
 ```
 
-▶実行結果
-
+▶実行結果  
 ![](image/chrome.developer.function.scope.png)
 
 ### 💎if文
@@ -481,8 +458,7 @@ if文は下記のように記述する。
 
 上記の例だとisEnableの部分が論理条件で、この論理条件によって真の場合と偽の場合に処理が分岐する。
 
-▶実行結果
-
+▶実行結果  
 ![](image/chrome.developer.if.png)
 
 ### 💎for文
@@ -504,8 +480,7 @@ forループを行うには
 }
 ```
 
-▶実行結果
-
+▶実行結果  
 ![](image/chrome.developer.forLoop.png)
 
 ### 💎配列を扱う
@@ -533,12 +508,10 @@ forループを行うには
 }
 ```
 
-▶実行結果
-
+▶実行結果  
 ![](image/chrome.developer.arrays.step001.png)
 
-▶実行結果
-
+▶実行結果  
 ![](image/chrome.developer.arrays.step002.png)
 
 ### 💎オブジェクトを定義
@@ -560,8 +533,7 @@ forループを行うには
 }
 ```
 
-▶実行結果
-
+▶実行結果  
 ![](image/chrome.developer.create.object.step001.png)
 
 その2
@@ -582,8 +554,7 @@ new Object()ではなく{}でもプロパティを持たないオブジェクト
 }
 ```
 
-▶実行結果
-
+▶実行結果  
 ![](image/chrome.developer.create.object.step002.png)
 
 その3
@@ -602,8 +573,7 @@ new Object()ではなく{}でもプロパティを持たないオブジェクト
 }
 ```
 
-▶実行結果
-
+▶実行結果  
 ![](image/chrome.developer.create.object.step003.png)
 
 ### 💎プロパティへアクセス
@@ -636,8 +606,7 @@ new Object()ではなく{}でもプロパティを持たないオブジェクト
 }
 ```
 
-▶実行結果
-
+▶実行結果  
 ![](image/chrome.developer.objects.png)
 
 ### 💎全プロパティの列挙
@@ -699,8 +668,7 @@ ECMAScript5から
 }
 ```
 
-▶実行結果
-
+▶実行結果  
 ![](image/chrome.developer.delete.property.png)
 
 ## 🔰html+JavaScriptで実行してみる(VSCode+Chrome)
@@ -726,8 +694,7 @@ html中にJavascriptを記述するには`<scrip>`タグを利用すればよい
 </html>
 ```
 
-このhtmlをファイル保存してchromeで開くと、consoleに下記のように表示されるかと思います。
-
+このhtmlをファイル保存してchromeで開くと、consoleに下記のように表示されるかと思います。  
 ![](image/html.heloworld.png)
 
 今回はhtmlファイルにJavaScriptを記載してますが。
@@ -749,8 +716,7 @@ VSCodeのデバック実行からchromeを起動してhtmlをデバックする�
 
 HTML Snippetsは文字通りHTMLのスニペット。今回はあまり関係ないがHTMLを書く時にインストールしていれば便利。
 
-Debugger for ChromeはVSCodeとChromeを連携させてデバック出来るようにする拡張。
-
+Debugger for ChromeはVSCodeとChromeを連携させてデバック出来るようにする拡張。  
 ![](image/debuggerForChrome.sample.png)
 
 利用すると上記のようにVSCodeからchromeを起動してVSCodeのデバックコンソールに結果が表示されるようになる。
@@ -762,31 +728,28 @@ VSCodeでコードを書きながら逐次確認できるので便利かと思�
 
 先に説明した拡張機能をVSCodeにインストールした後に。
 
+デバック->構成の追加  
 ![](image/VSCode.debug.setting.step001.png)
 
+Chromeを選択  
 ![](image/VSCode.debug.setting.step002.png)
 
+VSCodeのデバック設定に用いるlaunch.jsonがworkspaceの.vscodeに作成される。  
 ![](image/VSCode.debug.setting.step003.png)
-
-VSCodeのデバック設定に用いるlaunch.jsonが生成されます。
-
-![](image/VSCode.debug.setting.step004.png)
 
 今回は現在開いているファイルをchromeにlaunchしてデバックしたいので下記のように設定を記載します。
 
-このlunch.jsonの書き方については下記に資料があります。
-
+このlaunch.jsonの書き方については下記に資料があります。  
 [VSCODEデバック](https://vscode-doc-jp.github.io/docs/userguide/debugging.html)
 
+launch.jsonファイルを編集  
+![](image/VSCode.debug.setting.step004.png)
+
+今回のデバックで利用する設定の名称をJavaScript検証と設定したので、コレを選択してデバック実行(F5)。  
 ![](image/VSCode.debug.setting.step005.png)
 
-今回のデバックで利用する設定の名称をJavaScript検証と設定したので、コレを選択してデバック実行(F5)。
-
+デバック実行されました。  
 ![](image/VSCode.debug.setting.step006.png)
-
-デバック実行されました。
-
-![](image/VSCode.debug.setting.step007.png)
 
 ### 💎DOM (Document Object Model) でHTMLを操作
 
@@ -854,30 +817,24 @@ function setGreetEN() {
 - script.dom.js
 - tutorial.dom.html
 
-上記のファイルを作成してtutorial.dom.htmlを実行
-
+上記のファイルを作成して  
 ![](image/tutorial.dom.step001.png)
 
+tutorial.dom.htmlを実行  
 ![](image/tutorial.dom.step002.png)
 
-タイトル取得ボタンを押すとコンソールログにtitleが表示される。
-
+タイトル取得ボタンを押すとコンソールログにtitleが表示される。  
 ![](image/tutorial.dom.step003.png)
 
-Englishボタンを押すと、div要素に値を書き込む
-
+Englishボタンを押すと、div要素に値を書き込む  
 ![](image/tutorial.dom.step004.png)
 
-日本語ボタンを押すと、div要素に値を書き込む
-
+日本語ボタンを押すと、div要素に値を書き込む  
 ![](image/tutorial.dom.step005.png)
 
 ## 🔰総評
 
-JavaScriptって実装が先にあり、混沌としてから標準化が始まったり。
-
-また前提となるブラウザの覇権争い。各ブラウザでの互換。バージョン互換。
-
-調べ始めたら混沌とした状態が長らく続いているという感じで、とても辛そうに感じたのですが。
-
-以外としぶとく生き延びで、段々と勢力を増してるのをみて。なんかすごい！　って感じ。
+JavaScriptって実装が先にあり、混沌としてから標準化が始まったり。  
+また前提となるブラウザの覇権争い。各ブラウザでの互換。バージョン互換。  
+調べ始めたら混沌とした状態が長らく続いているという感じで、とても辛そうに感じたのですが。  
+以外としぶとく生き延びで、段々と勢力を増してるのをみて。なんかすごい！　って感じ。  
